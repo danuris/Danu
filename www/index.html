@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+
+	<link rel="stylesheet"  href="libs/jQM-flat/jquery.mobile.flatui.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+	<script type="text/javascript" src="libs/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="libs/jQueryMobile/jquery.mobile-1.3.2.min.js"></script>
+
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/function.js"></script>
+	<script type="text/javascript" src="js/tableToExcel.js"></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		// Call onDeviceReady when PhoneGap is loaded.
+		//
+		// At this point, the document has loaded but phonegap-1.0.0.js has not.
+		// When PhoneGap is loaded and talking with the native device,
+		// it will call the event `deviceready`.
+		// 
+		document.addEventListener("deviceready", onDeviceReady, false);
+		// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+		//
+		function onDeviceReady() {
+			// Now safe to use the PhoneGap API
+			document.getElementById("app").style.display = "initial";
+		}
+    </script>
+
+	<title>Penilaian</title>
+</head>
+<body>
+    <div id="app" style="display:initial;">				    
+        <!-- Home Page -->
+		<div id="home-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<img src="img/logo-smk.png" style="width:100px;display:block;margin:auto;">
+			<h1 style="text-align:center;">Penilaian Mata Pelajaran Produktif Siswa<br/>
+			SMK 45 WONOSARI</h1>
+			<br/>
+            <div data-role="content" >
+					<ul data-role="listview">
+						<li class="btn-menu-utama">
+							<a href="#penilaian-page" onmousedown="showDropdownPenilaian()" style="text-decoration: none;">
+								<img src="img/icon/penilaian.png" alt="">
+								<h2><b>PENILAIAN</b></h2>
+							</a>
+						</li>
+						<li class="btn-menu-utama">
+							<a href="#daftar-jurusan-page" onmousedown="showDaftarJurusan()" style="text-decoration: none;">
+								<img src="img/icon/jurusan.png" alt="">
+								<h2><b>DAFTAR JURUSAN</b></h2>
+							</a>
+						</li>
+						<li class="btn-menu-utama">
+							<a href="#daftar-kelas-page" onmousedown="showDropdown()" style="text-decoration: none;">
+								<img src="img/icon/kelas.png" alt="">
+								<h2><b>DAFTAR KELAS</b></h2>
+							</a>
+						</li>	
+						<li class="btn-menu-utama">
+							<a href="#daftar-siswa-page" onmousedown="showDropdown()" style="text-decoration: none;">
+								<img src="img/icon/siswa.png" alt="">
+								<h2><b>DAFTAR SISWA</b></h2>
+							</a>
+						</li>	
+						<li class="btn-menu-utama">
+							<a href="#daftar-mapel-page" onmousedown="showDaftarMapel()" style="text-decoration: none;">
+								<img src="img/icon/mapel.png" alt="">
+								<h2><b>DAFTAR MAPEL</b></h2>
+							</a>
+						</li>	
+						<li class="btn-menu-utama">
+							<a href="#daftar-kompetensi-page" onmousedown="showDropdownMapel()" style="text-decoration: none;">
+								<img src="img/icon/kompetensi.png" alt="">
+								<h2><b>DAFTAR KOMPETENSI</b></h2>
+							</a>
+						</li>
+						<li class="btn-menu-utama">
+							<a href="#komponen-penilaian-page" onmousedown="showDropdownKomponen()" style="text-decoration: none;">
+								<img src="img/icon/komponen.png" alt="">
+								<h2><b>KOMPONEN PENILAIAN</b></h2>
+							</a>
+						</li>	
+						<li class="btn-menu-utama">
+							<a href="#petunjuk-page" style="text-decoration: none;">
+								<img src="img/icon/bantuan.png" alt="">
+								<h2><b>PETUNJUK</b></h2>
+							</a>
+						</li>
+						<li class="btn-menu-utama">
+							<a href="#about-page" style="text-decoration: none;">
+								<img src="img/icon/tentang.png" alt="">
+								<h2><b>TENTANG</b></h2>
+							</a>
+						</li>
+						<li class="btn-menu-merah">
+							<a href="#exit-page" style="text-decoration: none;">
+								<img src="img/icon/exit.png" alt="">
+								<h2><b>KELUAR</b></h2>
+							</a>
+						</li>
+					</ul>	
+			</div>
+        </div><!-- /page  -->	
+		
+		<div  id="exit-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="content" align="justify" style="font-size: 16px;">
+				<!-- Isi konten di sini -->
+				<center>
+					<div style="margin:auto;">
+						<div class="ui-corner-all custom-corner" style="width:100%">
+							<div data-role="header">
+								<h3>Konfirmasi</h3>
+							</div>
+							<div data-role="content" style="background-color: rgba(255,255,255,0.7);">
+								<p style="text-align: center;"><b>Kamu yakin akan keluar dari aplikasi ini?</b></p>
+								<a href="#home-page" data-role="button" class="ui-btn-inline" data-theme="b">tidak</a>
+								<a href="#" data-role="button" class="ui-btn-inline" onclick="navigator.app.exitApp()" data-theme="d">ya</a>
+							</div>
+						</div>
+					</div>
+				</center>
+			</div>
+		</div>
+		
+        <!-- Penilaian Page -->
+		<div id="penilaian-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Penilaian</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<div style="background:#c0c0c0;padding: 10px 10px 10px 10px;">
+					<b>Pilihan</b><br/>
+					Jurusan : <br/>
+					<select id="pilihJurusan-000">
+					</select>
+					Kelas : <br/>
+					<select id="pilihKelas-000">
+					</select>
+					Nama Siswa : <br/>
+					<select id="pilihSiswa-000">
+					</select>
+					Mapel : <br/>
+					<select id="pilihMapel-000">
+					</select>
+					Kompetensi : <br/>
+					<select id="pilihKompetensi-000">
+					</select>
+					<a href="#" data-role="button" data-icon="search" data-theme="b" data-inline="true" id="btn-search-penilaian">Penilaian</a>
+					<a href="#" data-role="button" data-icon="search" data-theme="b" data-inline="true" onclick="showLaporanIndividu()">Lihat Laporan</a>
+					<a href="#" data-role="button" data-icon="search" data-theme="b" data-inline="true" onclick="showLaporanRekap()">Lihat Laporan Kelas</a>
+				</div>
+				<input type="hidden" id="jumlah-baris">
+				<input type="hidden" id="id-kompetensi-000">
+				<input type="hidden" id="id-mapel-000">
+				<input type="hidden" id="id-siswa-000">
+				<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow">
+					<thead>
+						<tr>
+							<th>Subkomponen Penilaian</th>
+							<th>Nilai</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-penilaian">
+					</tbody>
+				</table>
+				<a href="#" data-role="button" data-theme="b" id="btn-simpan-nilai">Simpan Nilai</a>
+            </div>
+        </div><!-- /page  -->
+		
+		<!-- Daftar Kelas Page -->
+		<div id="daftar-kelas-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Daftar Kelas</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<a href="#frm-add-kelas" data-rel="popup" data-position-to="window" data-role="button" data-icon="plus" data-theme="b">Tambah Kelas</a>
+				<div style="background:#c0c0c0;padding: 10px 10px 10px 10px;">
+					<b>Lihat Daftar Kelas:</b><br/>
+					<select id="pilihJurusan-kelas">
+						<option value='0'>Pilih Jurusan</option>
+						<option>Jurusan 1</option>
+					</select>
+					<a href="#" data-role="button" data-icon="search" data-theme="b" data-inline="true" id="searchDaftarKelas">Lihat Kelas</a>
+				</div>
+				<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="tabel-kelas">
+					<thead>
+						<tr>
+							<th>Kelas</th>
+							<th>Pilihan</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-daftar-kelas">
+					</tbody>
+				</table>
+            </div>
+			<div data-role="popup" id="frm-add-kelas" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Tambah Kelas</h1>
+				</div>
+				<div data-role="content">
+		            <label for="txt-mapel">Jurusan:</label>
+					<select id="pilihJurusan-2">
+						<option value='0'>Pilih Jurusan</option>
+						<option>Jurusan 1</option>
+					</select>
+		            <label for="txt-mapel">Nama Kelas:</label>
+		            <input type="text" name="add-nama-siswa" id="add-nama-kelas" value="" placeholder="Nama Kelas">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="saveKelas($('#pilihJurusan-2').val(),$('#add-nama-kelas').val())">Simpan</a>
+	        	</div>
+			</div>
+			<div data-role="popup" id="frm-update-kelas" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Update Kelas</h1>
+				</div>
+				<div data-role="content">
+					<input type="hidden" id="idKelas-update">
+		            <label for="txt-mapel">Nama Kelas:</label>
+		            <input type="text" id="update-nama-kelas" value="" placeholder="Nama Kelas">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('UPDATE tblKelas SET txtKelas=\''+$('#update-nama-kelas').val()+'\' WHERE idKelas=\''+$('#idKelas-update').val()+'\'');searchDaftarKelas()">Simpan</a>
+	        	</div>
+			</div>
+        </div><!-- /page  -->
+		
+		<!-- Daftar Siswa Page -->
+		<div id="daftar-siswa-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Daftar Siswa</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<a href="#frm-add-siswa" data-rel="popup" data-position-to="window" data-role="button" data-icon="plus" data-theme="b">Tambah Siswa</a>
+				<div style="background:#c0c0c0;padding: 10px 10px 10px 10px;">
+					<b>Lihat Daftar Nama Siswa:</b><br/>
+					<select id="pilihJurusan">
+						<option value='0'>Pilih Jurusan</option>
+						<option>Jurusan 1</option>
+					</select>
+					<select id="pilihKelas">
+						<option value='0'>Pilih Jurusan Terlebih Dahulu</option>
+						<option>Kelas 1</option>
+					</select>
+					<a href="#" data-role="button" data-icon="search" data-theme="b" data-inline="true" id="searchDaftarSiswa">Lihat Siswa</a>
+				</div>
+				<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="tabel-siswa">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Nama Siswa</th>
+							<th>Pilihan</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-daftar-siswa">
+					</tbody>
+				</table>
+            </div>
+			<div data-role="popup" id="frm-add-siswa" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Tambah Siswa</h1>
+				</div>
+				<div data-role="content">
+		            <label for="txt-mapel">Jurusan:</label>
+					<select id="pilihJurusan-1">
+						<option value='0'>Pilih Jurusan</option>
+						<option>Jurusan 1</option>
+					</select>
+		            <label for="txt-mapel">Kelas:</label>
+					<select id="pilihKelas-1" name="add-pilih-kelas">
+						<option value='0'>Pilih Jurusan</option>
+						<option>Jurusan 1</option>
+					</select>
+		            <label for="txt-mapel">No. Urut Siswa:</label>
+		            <input type="number" name="add-no-urut" id="add-no-urut" value="" placeholder="no urut">
+		            <label for="txt-mapel">Nama Siswa:</label>
+		            <input type="text" name="add-nama-siswa" id="add-nama-siswa" value="" placeholder="nama siswa">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="saveSiswa($('#pilihKelas-1').val(),$('#add-no-urut').val(),$('#add-nama-siswa').val())">Simpan</a>
+	        	</div>
+			</div>
+			<div data-role="popup" id="frm-update-siswa" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Update Siswa</h1>
+				</div>
+				<div data-role="content">
+					<input type="hidden" id="idSiswa-update">
+		            <label for="txt-mapel">Jurusan:</label>
+					<select id="pilihJurusan-update-siswa">
+						<option value='0'>Pilih Jurusan</option>
+						<option>Jurusan 1</option>
+					</select>
+		            <label for="txt-mapel">Kelas:</label>
+					<select id="pilihKelas-update-siswa" name="add-pilih-kelas">
+						<option value='0'>Pilih Jurusan</option>
+						<option>Jurusan 1</option>
+					</select>
+		            <label for="txt-mapel">No. Urut Siswa:</label>
+		            <input type="number" name="add-no-urut" id="update-no-urut" value="" placeholder="no urut">
+		            <label for="txt-mapel">Nama Siswa:</label>
+		            <input type="text" name="add-nama-siswa" id="update-nama-siswa" value="" placeholder="nama siswa"> 
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('UPDATE tblSiswa SET idKelas='+$('#pilihKelas-update-siswa').val()+', noUrut='+$('#update-no-urut').val()+', txtNamaSiswa=\''+$('#update-nama-siswa').val()+'\' WHERE idSiswa=\''+$('#idSiswa-update').val()+'\''); searchDaftarSiswa();">Simpan</a>
+	        	</div>
+			</div>
+        </div><!-- /page  -->
+		
+		<!-- Daftar Mapel Page -->
+		<div id="daftar-mapel-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Daftar Mapel</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<a href="#frm-add-mapel" data-rel="popup" data-position-to="window" data-role="button" data-icon="plus" data-theme="b" onmousedown="clearText();">Tambah Mapel</a>
+				<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable">
+					<thead>
+						<tr>
+							<th>Daftar Mapel</th>
+							<th>Pilihan</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-daftar-mapel">
+					</tbody>
+				</table>
+            </div>
+			<div data-role="popup" id="frm-add-mapel" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Tambah Mapel</h1>
+				</div>
+				<div data-role="content">
+		            <label for="txt-mapel">Mapel:</label>
+		            <input type="text" name="user" id="txt-mapel" value="" placeholder="Nama Mapel">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('INSERT INTO tblMapel VALUES(null,\''+$('#txt-mapel').val()+'\')');showDaftarMapel()">Simpan</a>
+	        	</div>
+			</div>
+			<div data-role="popup" id="frm-update-mapel" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Update Mapel</h1>
+				</div>
+				<div data-role="content">
+					<input type="hidden" id="idMapel-update">
+		            <label for="txt-mapel">Mapel :</label>
+		            <input type="text" id="update-mapel" value="">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('UPDATE tblMapel SET txtMapel=\''+$('#update-mapel').val()+'\' WHERE idMapel=\''+$('#idMapel-update').val()+'\'');showDaftarMapel()">Simpan</a>
+	        	</div>
+			</div>
+        </div><!-- /page  -->
+		
+		<!-- Daftar Kompetensi Page -->
+		<div id="daftar-kompetensi-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Daftar Kompetensi</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<a href="#frm-add-siswa" data-rel="popup" data-position-to="window" data-role="button" data-icon="plus" data-theme="b">Tambah Kompetensi</a>
+				<div style="background:#c0c0c0;padding: 10px 10px 10px 10px;">
+					<b>Lihat Daftar Kompetensi:</b><br/>
+					<select id="pilihMapel">
+						<option value='0'>Pilih Mapel</option>
+						<option>Mapel</option>
+					</select>
+					<a href="#" data-role="button" data-icon="search" data-theme="b" data-inline="true" id="searchKompetensi">Lihat Kompetensi</a>
+				</div>
+				<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="tabel-kompetensi">
+					<thead>
+						<tr>
+							<th>Kompetensi</th>
+							<th>Pilihan</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-daftar-kompetensi">
+						<!-- tampilkan daftar kompetensi di sini -->
+					</tbody>
+				</table>
+            </div>
+			<div data-role="popup" id="frm-add-siswa" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Tambah Kompetensi</h1>
+				</div>
+				<div data-role="content">
+		            <label for="txt-mapel">Mapel:</label>
+					<select id="pilihMapel-1">
+					</select>
+		            <label for="txt-mapel">Kompetensi:</label>
+		            <input type="text" name="add-nama-siswa" id="add-kompetensi" value="" placeholder="Kompetensi">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('INSERT INTO tblKompetensi VALUES(null,'+$('#pilihMapel-1').val()+',\''+$('#add-kompetensi').val()+'\')')">Simpan</a>
+	        	</div>
+			</div>
+			<div data-role="popup" id="frm-update-kompetensi" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Update Kompetensi</h1>
+				</div>
+				<div data-role="content">
+					<input type="hidden" id="idKompetensi-update">
+		            <label for="txt-mapel">Kompetensi:</label>
+		            <input type="text" name="add-nama-siswa" id="txt-mapel-update-kompetensi" value="" placeholder="Kompetensi">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('UPDATE tblKompetensi SET txtKompetensi=\''+$('#txt-mapel-update-kompetensi').val()+'\' WHERE idKompetensi=\''+$('#idKompetensi-update').val()+'\'');showDaftarKD()">Simpan</a>
+	        	</div>
+			</div>
+        </div><!-- /page  -->
+		
+		<!-- Komponen Penilaian Page -->
+		<div id="komponen-penilaian-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Komponen Penilaian</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<a href="#frm-add-subkomponen" data-rel="popup" data-position-to="window" data-role="button" data-icon="plus" data-theme="b" onmousedown="clearText()">Tambah Subkomponen</a>
+				<a href="#bobot-page" data-role="button" data-icon="" data-theme="b" onmousedown="showBobot()">Bobot Komponen</a>
+				<div style="background:#c0c0c0;padding: 10px 10px 10px 10px;">
+					<b>Lihat Daftar Subkomponen:</b><br/>
+					Mapel:<br/>
+					<select id="dd-mapel-00" onchange="get_kompetensi_from_mapel()">
+						<option value='0'>Pilih Mapel</option>
+						<option value='1'>Persiapan Kerja</option>
+						<option value='2'>Proses (Sitematika & Cara Kerja)</option>
+						<option value='3'>Hasil Kerja</option>
+						<option value='4'>Sikap Kerja</option>
+						<option value='5'>Waktu</option>
+					</select>
+					Kompetensi<br/>
+					<select id="dd-kompetensi-00">
+						<option value='0'>Pilih Kompetensi</option>
+						<option value='1'>Persiapan Kerja</option>
+						<option value='2'>Proses (Sitematika & Cara Kerja)</option>
+						<option value='3'>Hasil Kerja</option>
+						<option value='4'>Sikap Kerja</option>
+						<option value='5'>Waktu</option>
+					</select>
+					Komponen Penilaian:<br/>
+					<select id="dd-komponen-00">
+						<option value='0'>Pilih Komponen</option>
+						<option value='1'>Persiapan Kerja</option>
+						<option value='2'>Proses (Sitematika & Cara Kerja)</option>
+						<option value='3'>Hasil Kerja</option>
+						<option value='4'>Sikap Kerja</option>
+						<option value='5'>Waktu</option>
+					</select>
+					<a href="#" data-role="button" data-icon="search" data-theme="b" data-inline="true" id="searchDaftarSubkomponen">Lihat Subkomponen</a>
+				</div>
+				<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable">
+					<thead>
+						<tr>
+							<th>Subkomponen Penilaian</th>
+							<th>Pilihan</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-daftar-subkomponen">
+					</tbody>
+				</table>
+            </div>
+			<div data-role="popup" id="frm-add-subkomponen" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Tambah Subkomponen</h1>
+				</div>
+				<div data-role="content">
+					Mapel :<br/>
+					<select id="dd-mapel-01" onchange="get_kompetensi_from_mapel01()">
+					</select>
+					Kompetensi :<br/>
+					<select id="dd-kompetensi-01">
+					</select>
+					Komponen Penilaian :<br/>
+					<select id="dd-komponen-01">
+						<option value='0'>Pilih Komponen</option>
+						<option value='1'>Persiapan Kerja</option>
+						<option value='2'>Proses (Sitematika & Cara Kerja)</option>
+						<option value='3'>Hasil Kerja</option>
+						<option value='4'>Sikap Kerja</option>
+						<option value='5'>Waktu</option>
+					</select>
+		            <label for="txt-mapel">Subkomponen :</label>
+		            <input type="text" name="add-nama-siswa" id="add-subkomponen" value="" placeholder="subkomponen">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('INSERT INTO tblIndikator VALUES(null,'+$('#dd-komponen-01').val()+','+$('#dd-mapel-01').val()+','+$('#dd-kompetensi-01').val()+',\''+$('#add-subkomponen').val()+'\')')">Simpan</a>
+	        	</div>
+			</div>
+			<div data-role="popup" id="frm-edit-subkomponen" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Edit Subkomponen</h1>
+				</div>
+				<div data-role="content">
+		            <label for="txt-mapel">Subkomponen :</label>
+		            <input type="text" id="update-subkomponen" placeholder="subkomponen">
+		            <input type="hidden" id="id-update-subkomponen" placeholder="subkomponen">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('UPDATE tblIndikator SET txtIndikator=\''+$('#update-subkomponen').val()+'\' WHERE idIndikator=\''+$('#id-update-subkomponen').val()+'\'');showDaftarIndikator();$.mobile.back();">Simpan</a>
+	        	</div>
+			</div>
+        </div><!-- /page  -->
+		
+		<!-- Daftar Pembobotan Page -->
+		<div id="bobot-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Bobot Nilai Komponen</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable">
+					<thead>
+						<tr>
+							<th>Komponen Penilaian</th>
+							<th style="text-align: right">Bobot (%)</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-bobot">
+						<tr>
+							<td>Persiapan Kerja</td>
+							<td><input type="number" style="text-align: right" maxlength="3" id="k1" value='90'></td>
+						</tr>
+						<tr>
+							<td>Proses (Sistematika & Cara Kerja)</td>
+							<td><input type="number" style="text-align: right" maxlength="3" id="k2"></td>
+						</tr>
+						<tr>
+							<td>Hasil Kerja</td>
+							<td><input type="number" style="text-align: right" maxlength="3" id="k3"></td>
+						</tr>
+						<tr>
+							<td>Sikap Kerja</td>
+							<td><input type="number" style="text-align: right" maxlength="3" id="k4"></td>
+						</tr>
+						<tr>
+							<td>Waktu</td>
+							<td><input type="number" style="text-align: right" maxlength="3" id="k5"></td>
+						</tr>
+					</tbody>
+				</table>
+				<a href="#" data-theme="b" data-role="button" data-icon="arrow-check" id="simpan-bobot">Simpan</a>
+            </div>
+        </div><!-- /page  -->
+		
+		<!-- Daftar Mapel Page -->
+		<div id="daftar-jurusan-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Daftar Jurusan</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<a href="#frm-add-jurusan" data-rel="popup" data-position-to="window" data-role="button" data-icon="plus" data-theme="b">Tambah Jurusan</a>
+				<table data-role="table" data-mode="columntoggle" class="ui-responsive ui-shadow" id="myTable">
+					<thead>
+						<tr>
+							<th>Daftar Jurusan</th>
+							<th>Pilihan</th>
+						</tr>
+					</thead>
+					<tbody id="tabel-daftar-jurusan">
+					</tbody>
+				</table>
+            </div>
+			<div data-role="popup" id="frm-add-jurusan" data-theme="b" class="ui-corner-all">
+				<div data-role="header">
+					<h1>Tambah Jurusan</h1>
+				</div>
+				<div data-role="content">
+		            <label for="un">Jurusan:</label>
+		            <input type="text" name="user" id="un" value="" placeholder="Nama Jurusan">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('INSERT INTO tblJurusan VALUES(null,\''+$('#un').val()+'\')');showDaftarJurusan()">Simpan</a>
+	        	</div>
+			</div>
+			<div data-role="popup" id="frm-edit-jurusan" data-theme="b" class="ui-corner-all" data-position-to="window">
+				<div data-role="header">
+					<h1>Ubah</h1>
+				</div>
+				<div data-role="content">
+					<input type="hidden" id="idJurusan-update">
+		            <label for="un">Jurusan:</label>
+		            <input type="text" name="user" id="un-update" value="" placeholder="Nama Jurusan">
+					<a href="#" data-rel="back" data-role="button" data-icon="arrow-check" onmousedown="exeSQL('UPDATE tblJurusan SET txtJurusan=\''+$('#un-update').val()+'\' WHERE idJurusan=\''+$('#idJurusan-update').val()+'\'');showDaftarJurusan()">Simpan</a>
+	        	</div>
+			</div>
+        </div><!-- /page  -->
+		
+		<!-- Daftar Mapel Page -->
+		<div id="about-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Tentang</h1>
+            </div>
+			<br/>
+			<br/>
+			<br/>
+            <div data-role="content" style="font-size: 16px;">
+				<center><img src="img/icon.png"/></center>
+			<br/>
+			<br/>
+				<p align="justify">Aplikasi ini dirancang untuk mempermudah guru SMK dalam penilaian praktik pada mata pelajaran produktif. Aplikasi ini terdiri dari 5 komponen penilaian yang disesuaikan dengan panduan penilaian untuk SMK tahun 2015 yang terdiri dari: persiapan, proses kerja, hasil kerja, sikap kerja,dan waktu. untuk sub komponen dapat diisi sesuai dengan penilaian yang akan dilakukan.</p>
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h2>Mahasiswa</h2>
+				Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Danu Ristianto<br/>
+				NIM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 12501244006<br/>
+				Jurusan  : Pendidikan Teknik Elektro
+				<br/>				
+				</div><div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h2>Dosen Pembimbing</h2>
+				Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Dr. Samsul Hadi, M.Pd, M.T.<br/>
+				NIM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 19600529 198403 1 003<br/>
+				</div>
+			<div>
+				<hr/>
+				<small>Ikon dari <a href="http://flaticon.com">Flaticon</a></small>
+            </div>
+        </div><!-- /page  -->
+		
+		<div id="laporan-rekap" data-role="page">
+			<div id="hidden">
+			</div>
+			<input type="hidden" id="nilai-j">
+			<table id="tabel-laporan-rekap" style="border-collapse: collapse">
+				<tr style="text-align: center">
+					<td rowspan="2" style="border: 1px solid"><b>NO</b></td>
+					<td rowspan="2" style="border: 1px solid"><b>NO PESERTA</b></td>
+					<td rowspan="2" style="border: 1px solid"><b>NAMA</b></td>
+					<td colspan="2" style="border: 1px solid"><b>NILAI</b></td>
+				</tr>
+				<tr style="text-align: center">
+					<td style="border: 1px solid"><b>ANGKA</b></td>
+					<td style="border: 1px solid"><b>HURUF</b></td>
+				</tr>
+				<tbody id="konten-laporan-rekap">
+				<tr>
+					<td style="border: 1px solid; text-align: center">1</td>
+					<td style="border: 1px solid">04-05-116-068-5</td>
+					<td style="border: 1px solid">ALFIANI KHODISAH</td>
+					<td style="border: 1px solid; text-align: center">92.93</td>
+					<td style="border: 1px solid">sembilan dua koma sembilan tiga</td>
+				</tr>
+				<tr>
+					<td style="border: 1px solid; text-align: center">1</td>
+					<td style="border: 1px solid">04-05-116-068-5</td>
+					<td style="border: 1px solid">ALFIANI KHODISAH</td>
+					<td style="border: 1px solid; text-align: center">92.93</td>
+					<td style="border: 1px solid">sembilan dua koma sembilan tiga</td>
+				</tr>
+				<tr>
+					<td style="border: 1px solid; text-align: center">1</td>
+					<td style="border: 1px solid">04-05-116-068-5</td>
+					<td style="border: 1px solid">ALFIANI KHODISAH</td>
+					<td style="border: 1px solid; text-align: center">92.93</td>
+					<td style="border: 1px solid">sembilan dua koma sembilan tiga</td>
+				</tr>
+				</tbody>
+			</table>
+			<button onclick="tableToExcel('tabel-laporan-rekap','rekap data')">Simpan Tabel</button>
+		</div>
+		
+		<div id="laporan-siswa" data-role="page" style="font-size: 16px;">
+			<table id="tabel-laporan-individu" style="border-collapse: collapse">
+				<tr>
+					<td></td>
+					<td>Kompetensi</td>
+					<td colspan="3" id="li-kompetensi">Kompetensi Dasar</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>Nama</td>
+					<td colspan="3" id="li-nama">Nama Siswa</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>No. Urut</td>
+					<td colspan="3" id="li-nomor">4</td>
+				</tr>
+				<tr style="text-align: center">
+					<td style="border: 1px solid"><b>No.</b></td>
+					<td colspan="2" style="border: 1px solid"><b>Komponen/Subkomponen Penilaian</b></td>
+					<td style="border: 1px solid"><b>Skor Perolehan</b></td>
+					<td style="border: 1px solid"><b>(Skor Perolehan/ Skor Maks )x Bobot</b></td>
+				</tr>
+				<tr style="text-align: center">
+					<td style="border: 1px solid">1</td>
+					<td colspan="2" style="border: 1px solid">2</td>
+					<td style="border: 1px solid">3</td>
+					<td style="border: 1px solid">4</td>
+				</tr>
+				<tbody id="konten-laporan-individu">
+				<tr>
+					<td rowspan="4" style="border: 1px solid">I</td>
+					<td colspan="2" style="border: 1px solid"><b>Persiapan Kerja</b></td>
+					<td style="border: 1px solid"></td>
+					<td style="border: 1px solid"></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="border: 1px solid">Mempersiapkan alat keselamatan kerja.</td>
+					<td style="border: 1px solid">95</td>
+					<td rowspan="3" style="border: 1px solid">4.75</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="border: 1px solid">Memeriksa kelengkapan alat dan bahan praktek.</td>
+					<td style="border: 1px solid">95</td>
+				</tr>
+				<tr>
+					<td style="border: 1px solid"><b>Memeriksa kelengkapan alat dan bahan praktek.</b></td>
+					<td style="border: 1px solid"><b>(Bobot 5%)</b></td>
+					<td style="border: 1px solid"><b>190</b></td>
+				</tr>
+				</tbody>
+			</table>
+			<button onclick="tableToExcel('tabel-laporan-individu',$('#li-nama').html())">Simpan Tabel</button>
+		</div>
+		
+		
+		<!-- Daftar Mapel Page -->
+		<div id="petunjuk-page" data-role="page" style="background: url('img/bg/bg-profil.png'); background-repeat: repeat-x repeat-y;">
+			<div data-role="header" data-position="fixed" data-tap-toggle="false" data-transition="none" data-id="header">
+				<a href="#" data-rel="back" data-role="button" data-icon="arrow-l" data-inline="true" >Back</a>
+				<h1>Petunjuk</h1>
+            </div>
+            <div data-role="content" style="font-size: 16px;">
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Tombol dan fungsinya</h3>
+					<p>Berikut merupakan tombol dan menu berserta fungsinya yang terdapat pada aplikasi penilaian ini.</p>
+					<img src="img/help/back.png"/><br/>digunakan untuk kembali ke tampilan sebelumnya.<br/>
+					<hr/>
+					<img src="img/help/add.png"/><br/>berfungsi untuk pemenambahan data.<br/>
+					<hr/>
+					<img src="img/help/edit.png"/><br/>berfungsi untuk melakukan perubahan data.<br/>
+					<hr/>
+					<img src="img/help/delete.png"/><br/>digunakan untuk menghapus data.<br/>
+					<hr/>
+					<img src="img/help/view.png"/><br/>melihat data.<br/> 
+					<hr/>
+					<img src="img/help/simpan.png"/><br/>menyimpan data.<br/> 
+					<hr/>
+					<img src="img/help/menu-penilaian.png"/><br/>pengguna dapat melakukan penilaian praktik dan melihat laporan siswa menggunakan menu ini.<br/> 
+					<hr/>
+					<img src="img/help/menu-jurusan.png"/><br/>menu ini berfungsi untuk menampilkan dan mengedit data jurusan.<br/> 
+					<hr/>
+					<img src="img/help/menu-kelas.png"/><br/>menu ini berfungsi untuk menampilkan dan mengedit data kelas.<br/> 
+					<hr/>
+					<img src="img/help/menu-siswa.png"/><br/>menu ini berfungsi untuk menampilkan dan mengedit data siswa.<br/> 
+					<hr/>
+					<img src="img/help/menu-mapel.png"/><br/>menu ini berfungsi untuk menampilkan dan mengedit data mata pelajaran.<br/> 
+					<hr/>
+					<img src="img/help/menu-kompetensi.png"/><br/>menu ini berfungsi untuk menampilkan dan mengedit data kompetensi.<br/> 
+					<hr/>
+					<img src="img/help/menu-komponen.png"/><br/>menu ini berfungsi untuk menampilkan dan mengedit data subkomponen penilaian.<br/> 
+					<hr/>
+					<img src="img/help/menu-petunjuk.png"/><br/>petunjuk tentang cara penggunaan aplikasi dan pengenalan fungsi berbagai tombol terdapat pada menu ini.<br/> 
+					<hr/>
+					<img src="img/help/menu-tentang.png"/><br/>menampilkan informasi mengenai aplikasi dan pengembang aplikasi.<br/> 
+					<hr/>
+					<img src="img/help/menu-exit.png"/><br/>penguna dapat keluar dari aplikasi menggunakan menu ini.<br/> 
+				</div>
+				
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Menambah Data Jurusan</h3>
+					<ol>
+						<li>Buka menu <b>daftar jurusan</b> pada menu utama</li>
+						<li>Klik tombol <b>tambah jurusan</b></li>
+						<li>Masukkan nama jurusan pada kolom yang tersedia</li>
+						<li>Klik tombol <b>simpan</b></li>
+					</ol>
+				</div>
+				
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Menambah Data Kelas</h3>
+					<ol>
+						<li>Buka menu <b>daftar kelas</b> pada menu utama</li>
+						<li>Klik tombol <b>tambah kelas</b></li>
+						<li>Masukkan nama jurusan dan nama kelas pada kolom yang tersedia</li>
+						<li>Klik tombol <b>simpan</b></li>
+					</ol>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Menambah Data Siswa</h3>
+					<ol>
+						<li>Buka menu <b>daftar siswa</b> pada menu utama</li>
+						<li>Klik tombol <b>tambah siswa</b></li>
+						<li>Pilih jurusan dan kelas</li>
+						<li>Masukkan no urut dan nama siswa pad kolom yang tersedia</li>
+						<li>Klik tombol <b>simpan</b></li>
+					</ol>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Menambah Data Mata Pelajaran</h3>
+					<ol>
+						<li>Buka menu <b>daftar mapel</b> pada menu utama</li>
+						<li>Klik tombol <b>tambah mapel</b></li>
+						<li>Isikan nama mata pelajaran pada kolom yang tersedia</li>
+						<li>Klik tombol <b>simpan</b></li>
+					</ol>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Menambah Data Kompetensi</h3>
+					<ol>
+						<li>Buka menu <b>daftar kompetensi</b> pada menu utama</li>
+						<li>Klik tombol <b>tambah kompetensi</b></li>
+						<li>Pilih mata pelajaran terkait</li>
+						<li>Isikan kompetensi dasar pada kolom yang tersedia</li>
+						<li>Klik tombol <b>simpan</b></li>
+					</ol>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Mengubah Bobot Penilaian</h3>
+					<ol>
+						<li>Buka menu <b>komponen penilaian</b> pada menu utama</li>
+						<li>Klik tombol <b>bobot komponen</b></li>
+						<li>Masukkan bobot masing-masing komponen penilaian pada kolom yang tersedia</li>
+						<li>Klik tombol <b>simpan</b></li>
+					</ol>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Menambah Data Subkomponen Penilaian</h3>
+					<ol>
+						<li>Buka menu <b>komponen penilaian</b> pada menu utama</li>
+						<li>Klik tombol <b>tambah subkomponen</b></li>
+						<li>Pilih mata pelajaran</li>
+						<li>Pilih kompetensi</li>
+						<li>Pilih komponen penilaian</li>
+						<li>Masukkan subkomponen penilaian pada kolom yang tersedia</li>
+						<li>Klik tombol <b>simpan</b></li>
+					</ol>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Melakukan Penilaian</h3>
+					<ol>
+						<li>Buka menu <b>penilaian</b> pada menu utama</li>
+						<li>Pilih data siswa yang akan dinilai</li>
+						<li>Pilih data mata pelajaran dan kompetensi yang akan dinilai</li>
+						<li>Klik tombol <b>penilaian</b></li>
+						<li>Isikan nilai tipa-tiap subkomponen penilaian pad kolom yang tersedia</li>
+						<li>Klik tombol <b>simpan nilai</b></li>
+					</ol>
+				</div>
+
+				<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u" data-iconpos="right" data-theme="a">
+					<h3>Melihat Laporan Penilaian</h3>
+					<h4>A. Laporan Penilaian Siswa</h4>
+					<ol>
+						<li>Buka menu <b>penilaian</b> pada menu utama</li>
+						<li>Pilih data siswa yang akan dilihat laporannya</li>
+						<li>Pilih data mata pelajaran dan kompetensi yang akan dilihat laporannya</li>
+						<li>Klik tombol <b>laporan siswa</b></li>
+						<li>Klik tombol <b>simpan tabel</b> untuk menyimpan laporan dalam format excel</li>
+					</ol>
+					<h4>B. Laporan Penilaian Kelas</h4>
+					<ol>
+						<li>Buka menu <b>penilaian</b> pada menu utama</li>
+						<li>Pilih data kelas yang akan dilihat laporannya</li>
+						<li>Pilih data mata pelajaran dan kompetensi yang akan dilihat laporannya</li>
+						<li>Klik tombol <b>laporan kelas</b></li>
+						<li>Klik tombol <b>simpan tabel</b> untuk menyimpan laporan dalam format excel</li>
+					</ol>
+				</div>
+            </div>
+        </div><!-- /page  -->	
+    </div>
+		
+    </body>
+</html>
